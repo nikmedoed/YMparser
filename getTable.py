@@ -1,24 +1,25 @@
 from selenium import webdriver
-from time import sleep
-import string
-import random
 import xlwt
 from getInfo import getInfo
 import datetime
+import json
 
-# из берет файл со ссылками на товары и преобразует в таблицу с характеристиками
-def getData():
+# берет файл со ссылками (или ссылки) на товары и преобразует в таблицу с характеристиками
+def getTab(name, links=None):
+    if not links:
+        with open('links' + name + '.txt', 'r') as s:
+            links = s.read().split('\n')
     browser = webdriver.Chrome()
     book = xlwt.Workbook(encoding="utf-8")
     sh = book.add_sheet()
-    with open('links.txt', 'r') as s:
-        links = s.read().split('\n')
 
     infos = list(map(lambda x: getInfo(browser, x), links))
     tabs = set()
     for i in infos:
         tabs.update(set(i.keys()))
     tabs = list(tabs)
+
+    path = 'result' + name + " - " + str(datetime.datetime.today()).replace(":", "=")
 
     rows = len(infos)
     for i in range(len(tabs)):
@@ -27,9 +28,12 @@ def getData():
         for j in range(rows):
             sh.write(j + 1, i, infos[j].get(col))
 
-    book.save(str(datetime.datetime.today()).replace(":", "=")+".xls")
+    with open(path + ".json", "w", encoding="utf8") as write_file:
+        json.dump(infos, write_file, ensure_ascii=False)
+
+    book.save(path + ".xls")
     browser.close()
 
 if __name__ == "__main__":
-    print(getData())
+    print(getTab("Стиралки"))
 

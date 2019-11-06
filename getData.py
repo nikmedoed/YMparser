@@ -6,10 +6,7 @@ import xlwt
 from getInfo import getInfo
 import datetime
 
-def getLinks():
-    with open("toParse.txt", "r") as f:
-
-    link = "https://market.yandex.ru/catalog--samokaty/54700/list?hid=7070735&glfilter=7081037%3A11854638&glfilter=7081038%3A11854645&glfilter=7083283%3A11854650&glfilter=7083337%3A85~&onstock=1&local-offers-first=0"
+def getLinks(name, link):
     browser = webdriver.Chrome()
     browser.get(link)
     sleep(random.randint(1, 250))
@@ -28,10 +25,12 @@ def getLinks():
             else:
                 break
     links = list(map(lambda x: x.split('?')[0] + "/spec?track=tabs", links))
-    with open('links.txt', 'w') as s:
+    with open('links\\' + name + '.txt', 'w') as s:
         s.write("\n".join(links))
     browser.close()
+    return links
 
 if __name__ == "__main__":
-    print(getLinks())
+    print(getLinks("Стиралки",
+                   "https://market.yandex.ru/catalog--stiralnye-mashiny/54913/list?onstock=1&local-offers-first=0"))
 
