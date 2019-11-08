@@ -1,25 +1,28 @@
 from selenium import webdriver
 from time import sleep
-import string
 import random
-import xlwt
-from getInfo import getInfo
-import datetime
+from datetime import datetime
 
 def getLinks(name, link):
     browser = webdriver.Chrome()
     browser.get(link)
-    sleep(random.randint(1, 250))
+    sleep(random.randint(5, 20))
     links = []
     print("start")
     while 1:
-        lis = browser.find_elements_by_class_name('n-snippet-cell2__image')
+        lis = browser.find_elements_by_xpath('//div[4]/div[1]/div[1]/a')
         links.extend(list(map(lambda x: x.get_attribute('href'), lis)))
+
+        # https://riptutorial.com/selenium-webdriver/example/28140/scrolling-using-python
+        # if lis: lis[random.randint(len(lis))].
+
+
         next = browser.find_element_by_class_name('n-pager__button-next').get_attribute('href')
         while next:
             try:
                 sleep(random.randint(1, 250))
                 browser.get(next)
+                print(datetime.now(), "- next")
             except:
                 print('хьюстон, нас банят эгэйн')
             else:

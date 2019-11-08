@@ -34,7 +34,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -56,7 +56,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.getInfo">
+  <component name="RunManager" selected="Python.parser">
     <configuration name="getInfo" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="mat-mod-monitor" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -186,8 +186,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.getInfo" />
         <item itemvalue="Python.parser" />
+        <item itemvalue="Python.getInfo" />
         <item itemvalue="Python.reader" />
         <item itemvalue="Python.getTable2" />
         <item itemvalue="Python.getIngo" />
@@ -229,12 +229,17 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/YMparser" />
+    </ignored-roots>
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/getData.py</url>
-          <line>18</line>
+          <line>20</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
